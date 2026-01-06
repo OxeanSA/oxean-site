@@ -4,7 +4,7 @@
 	<title>Oxean SA | The Future</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
@@ -21,7 +21,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Keeps Nav top, Content Middle, Buttons Bottom */
+            justify-content: space-between; 
             align-items: center;
             position: relative;
             z-index: 10;
@@ -53,6 +53,29 @@
         .bottom-nav { position: absolute; bottom: 4%; left: 0; width: 100%; z-index: 100; gap: 16px; }
         .nav-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; border-bottom: 2px solid transparent; padding-bottom: 8px; }
         .nav-btn.active { opacity: 1; border-color: #fff; }
+
+        /* Vertical Left Navigation */
+        .vertical-nav {
+            position: fixed;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            z-index: 1000;
+        }
+        .v-icon { color: #fff; font-size: 22px; opacity: 0.5; cursor: pointer; transition: 0.3s; }
+        .v-icon:hover { opacity: 1; }
+
+        /* Mobile Adjustments */
+        .mobile-only-icon { display: none !important; }
+
+        @media (max-width: 767px) {
+            .desktop-text { display: none !important; }
+            .mobile-only-icon { display: inline-block !important; font-size: 20px; color: #fff; margin-left: 20px; }
+            .vertical-nav { left: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -63,15 +86,26 @@
 		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg04.jpg');"></div>
 	</div>
 
+    <div class="vertical-nav">
+        <i class="zmdi zmdi-home v-icon" title="Home"></i>
+        <i class="zmdi zmdi-account v-icon" title="User Management"></i>
+        <i class="zmdi zmdi-card v-icon" title="Billing"></i>
+        <i class="zmdi zmdi-shopping-cart v-icon" title="Shopping"></i>
+        <i class="zmdi zmdi-chart v-icon" title="Analytics"></i>
+    </div>
+
 	<div class="main-container size1 overlay1 p-l-75 p-r-75 p-lr-15-sm">
 		
         <header class="w-full flex-sb-m p-t-40">
 			<div class="wrappic1">
 				<a href="#"><span class="lg-txt1" style="font-size: 20px !important;">Oxean SA</span></a>
 			</div>
-            <nav class="flex-w">
-                <a href="#" class="s1-txt1 m-r-25" style="font-size: 12px; opacity: 0.8;">Explore</a>
-                <a href="#" class="s1-txt1" style="font-size: 12px; opacity: 0.8;">Support</a>
+            <nav class="flex-w flex-m">
+                <a href="#" class="s1-txt1 m-r-25 desktop-text" style="font-size: 12px; opacity: 0.8;">Explore</a>
+                <a href="#" class="s1-txt1 desktop-text" style="font-size: 12px; opacity: 0.8;">Support</a>
+
+                <a href="#" class="mobile-only-icon"><i class="zmdi zmdi-account-o"></i></a>
+                <a href="#" class="mobile-only-icon"><i class="zmdi zmdi-search"></i></a>
             </nav>
 		</header>
 
@@ -130,7 +164,7 @@
 
 		</main>
 		
-		<footer class="bottom-controls w-full">
+		<footer class="bottom-controls w-full" style="padding-bottom: 40px;">
 			<div class="flex-w flex-c-m">
 				<div class="nav-btn active m-lr-20" onclick="goToTab(0)">Vision</div>
 				<div class="nav-btn m-lr-20" onclick="goToTab(1)">Ecosystem</div>
@@ -155,7 +189,6 @@
             $($('.nav-btn')[index]).addClass('active');
         }
 
-        // Scroll-to-Transition (Slide up to next tab)
         let isTransitioning = false;
         window.addEventListener('wheel', function(e) {
             if (isTransitioning) return;
@@ -173,7 +206,6 @@
             setTimeout(() => { isTransitioning = false; }, 800);
         }
 
-        // Mobile Swipe Support
         let startY = 0;
         window.addEventListener('touchstart', e => startY = e.touches[0].pageY);
         window.addEventListener('touchend', e => {
@@ -184,9 +216,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
