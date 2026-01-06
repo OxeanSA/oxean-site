@@ -4,7 +4,7 @@
 	<title>Oxean SA | The Future of Connection</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
@@ -13,108 +13,116 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
     <style>
-        /* Meta-Inspired Core Style */
-        html, body { overflow: hidden; height: 100vh; width: 100vw; font-family: 'Montserrat-Regular', sans-serif; }
-        .tab-content { display: none; width: 100%; max-width: 1100px; }
+        /* Lock Viewport & Meta Aesthetics */
+        html, body { overflow: hidden; height: 100vh; width: 100vw; background-color: #000; }
+        
+        /* Centering Logic */
+        .main-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Keeps Nav top, Content Middle, Buttons Bottom */
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .center-content-wrapper {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .tab-content { display: none; width: 100%; max-width: 1000px; text-align: center; }
         .tab-content.active { display: block; }
         
-        /* Typography - Precise & Professional */
-        .meta-title { font-size: 32px !important; font-family: Montserrat-SemiBold; letter-spacing: -0.5px; line-height: 1.1; color: #fff; }
-        .meta-desc { font-size: 14px !important; line-height: 1.6; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
-        .small-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: #0084ff; font-weight: bold; margin-bottom: 15px; display: block; }
+        /* Precise Professional Typography */
+        .meta-title { font-size: 30px !important; font-family: Montserrat-SemiBold; color: #fff; line-height: 1.2; letter-spacing: -0.02em; }
+        .meta-desc { font-size: 14px !important; line-height: 1.6; color: rgba(255,255,255,0.7); max-width: 580px; margin: 0 auto; }
+        .small-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #0084ff; font-weight: bold; display: block; margin-bottom: 10px; }
         
-        /* Feature Grid */
-        .grid-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 8px; transition: all 0.3s ease; }
-        .grid-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-5px); }
-        .grid-card i { font-size: 24px; color: #fff; margin-bottom: 20px; }
-        .grid-card h4 { font-size: 16px; color: #fff; margin-bottom: 10px; font-family: Montserrat-SemiBold; }
+        /* Grid Layouts */
+        .grid-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 25px; border-radius: 8px; height: 100%; }
+        .grid-card i { font-size: 20px; color: #fff; margin-bottom: 15px; }
+        .grid-card h4 { font-size: 15px; font-family: Montserrat-SemiBold; color: #fff; margin-bottom: 8px; }
 
-        /* Navigation Controls */
-        .bottom-nav { position: absolute; bottom: 40px; left: 0; width: 100%; z-index: 100; }
-        .nav-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; border-bottom: 2px solid transparent; padding-bottom: 8px; }
+        /* Navigation Buttons */
+        .bottom-controls { padding-bottom: 50px; }
+        .nav-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; font-size: 11px; font-weight: 600; text-transform: uppercase; color: #fff; border-bottom: 2px solid transparent; padding-bottom: 5px; }
         .nav-btn.active { opacity: 1; border-color: #fff; }
     </style>
 </head>
 <body>
 	
 	<div class="simpleslide100">
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg01.jpg');"></div>
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg03.jpg');"></div>
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg04.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg01.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg02.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg03.jpg');"></div>
 	</div>
 
-	<div class="flex-col-c-sb size1 overlay1 p-l-75 p-r-75 p-t-40 p-b-40 p-lr-15-sm">
-		<div class="w-full flex-w flex-sb-m">
+	<div class="main-container overlay1 p-l-75 p-r-75 p-lr-15-sm">
+		
+        <header class="w-full flex-sb-m p-t-40">
 			<div class="wrappic1">
-				<a href="#"><span class="lg-txt1" style="font-size: 20px !important;">Oxean SA</span></a>
+				<a href="#"><span class="lg-txt1" style="font-size: 18px !important;">Oxean SA</span></a>
 			</div>
-            <div class="flex-w">
-                <a href="#" class="s1-txt1 m-r-25" style="font-size: 12px; opacity: 0.8;">Technology</a>
-                <a href="#" class="s1-txt1" style="font-size: 12px; opacity: 0.8;">About Us</a>
-            </div>
-		</div>
+            <nav class="flex-w">
+                <a href="#" class="s1-txt1 m-r-25" style="font-size: 12px; opacity: 0.7;">Technology</a>
+                <a href="#" class="s1-txt1" style="font-size: 12px; opacity: 0.7;">Culture</a>
+            </nav>
+		</header>
 
-		<div class="w-full flex-col-c-m text-center">
+		<main class="center-content-wrapper">
             
             <div id="tab-0" class="tab-content active animated fadeIn">
-                <span class="small-tag">Our Vision</span>
-                <h1 class="meta-title p-b-25">Connecting the world,<br>starting with our community.</h1>
-                <p class="meta-desc">Oxean SA builds the digital infrastructure that empowers people to connect, grow, and thrive in a modern ecosystem.</p>
+                <span class="small-tag">Connection First</span>
+                <h1 class="meta-title p-b-20">The future is built on <br> how we connect.</h1>
+                <p class="meta-desc">Oxean SA develops the platforms and infrastructure that bring people closer together through software, internet, and shared talent.</p>
             </div>
 
             <div id="tab-1" class="tab-content animated fadeIn">
                 <div class="row">
                     <div class="col-md-4 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-apps"></i>
-                            <h4>Software</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Proprietary SaaS platforms designed for global community impact.</p>
+                            <i class="zmdi zmdi-code-setting"></i>
+                            <h4>SaaS & APIs</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">Proprietary software and robust developer tools built for global scale.</p>
                         </div>
                     </div>
                     <div class="col-md-4 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-code"></i>
-                            <h4>API Services</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Advanced developer tools and APIs powering the next generation of apps.</p>
+                            <i class="zmdi zmdi-wifi-alt"></i>
+                            <h4>Community ISP</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">High-speed community internet infrastructure owned and operated by Oxean SA.</p>
                         </div>
                     </div>
                     <div class="col-md-4 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-input-antenna"></i>
-                            <h4>Connectivity</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Owner-operated Community ISP providing high-speed digital access.</p>
+                            <i class="zmdi zmdi-trending-up"></i>
+                            <h4>Ads & Data</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">Privacy-first advertising solutions that drive growth for local businesses.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="tab-2" class="tab-content animated fadeIn">
-                <div class="row">
-                    <div class="col-md-6 p-all-10">
-                        <div class="grid-card">
-                            <i class="zmdi zmdi-trending-up"></i>
-                            <h4>Advertising</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Smart, privacy-first advertising solutions for the local market.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 p-all-10">
-                        <div class="grid-card">
-                            <i class="zmdi zmdi-graduation-cap"></i>
-                            <h4>Talent</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Mentoring and developing top-tier engineering talent in South Africa.</p>
-                        </div>
-                    </div>
-                </div>
+                <span class="small-tag">Engineers of Tomorrow</span>
+                <h1 class="meta-title p-b-20">Nurturing Human Capital</h1>
+                <p class="meta-desc">We identify, mentor, and deploy world-class tech talent across South Africa. Our programs focus on API mastery and advanced web development.</p>
             </div>
-		</div>
+
+		</main>
 		
-		<div class="bottom-nav">
+		<footer class="bottom-controls w-full">
 			<div class="flex-w flex-c-m">
-				<div class="nav-btn active m-lr-25" onclick="goToTab(0)">Vision</div>
-				<div class="nav-btn m-lr-25" onclick="goToTab(1)">Ecosystem</div>
-				<div class="nav-btn m-lr-25" onclick="goToTab(2)">Development</div>
+				<div class="nav-btn active m-lr-20" onclick="goToTab(0)">Vision</div>
+				<div class="nav-btn m-lr-20" onclick="goToTab(1)">Ecosystem</div>
+				<div class="nav-btn m-lr-20" onclick="goToTab(2)">Talent</div>
 			</div>
-		</div>
+		</footer>
 	</div>
 
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -122,33 +130,32 @@
 
     <script>
         let currentTab = 0;
-        const tabs = $('.tab-content');
-        const totalTabs = tabs.length;
+        const totalTabs = $('.tab-content').length;
 
         function goToTab(index) {
             currentTab = index;
-            tabs.removeClass('active');
-            $(tabs[index]).addClass('active');
+            $('.tab-content').removeClass('active');
+            $(`#tab-${index}`).addClass('active');
             
             $('.nav-btn').removeClass('active');
             $($('.nav-btn')[index]).addClass('active');
         }
 
-        // Scroll/Slide to Transition Logic
+        // Scroll-to-Transition (Slide up to next tab)
         let isTransitioning = false;
         window.addEventListener('wheel', function(e) {
             if (isTransitioning) return;
             
             if (e.deltaY > 0 && currentTab < totalTabs - 1) {
-                transitionEffect(() => goToTab(currentTab + 1));
+                lockAndGo(currentTab + 1);
             } else if (e.deltaY < 0 && currentTab > 0) {
-                transitionEffect(() => goToTab(currentTab - 1));
+                lockAndGo(currentTab - 1);
             }
         });
 
-        function transitionEffect(callback) {
+        function lockAndGo(index) {
             isTransitioning = true;
-            callback();
+            goToTab(index);
             setTimeout(() => { isTransitioning = false; }, 800);
         }
 
