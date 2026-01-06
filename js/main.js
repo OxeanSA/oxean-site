@@ -6,6 +6,15 @@
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
+    // Smooth Scroll for Nav Links
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = this.hash;
+        $('html, body').animate({
+            scrollTop: $(target).offset().top
+        }, 800);
+    });
+
     $('.validate-form').on('submit',function(){
         var check = true;
 
@@ -55,7 +64,7 @@
     
     /*==================================================================
     [ Simple slide100 ]*/
-
+    
     $('.simpleslide100').each(function(){
         var delay = 7000;
         var speed = 1000;
@@ -74,6 +83,7 @@
             if(nowSlide >= itemSlide.length) {nowSlide = 0;}
         },delay);
     });
+
 
 
 })(jQuery);
