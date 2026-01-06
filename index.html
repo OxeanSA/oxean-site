@@ -67,6 +67,7 @@
         }
         .v-icon { color: #fff; font-size: 22px; opacity: 0.5; cursor: pointer; transition: 0.3s; }
         .v-icon:hover { opacity: 1; }
+		.v-icon.active { opacity: 1; }
 
         /* Mobile Adjustments */
         .mobile-only-icon { display: none !important; gap: 4px; }
@@ -87,7 +88,7 @@
 	</div>
 
     <div class="vertical-nav">
-		<i class="zmdi zmdi-home v-icon" title="Home"></i>
+		<i class="zmdi zmdi-home v-icon active" title="Home"></i>
         <!-- <i class="zmdi zmdi-account v-icon" title="User Management"></i> -->
         <i class="zmdi zmdi-shopping-cart v-icon" title="Shopping"></i>
 		<i class="zmdi zmdi-card v-icon" title="Billing"></i>
@@ -216,6 +217,7 @@
     </script>
 </body>
 </html>
+
 
 
 
