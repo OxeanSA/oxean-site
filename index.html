@@ -30,28 +30,27 @@
         .center-content-wrapper {
             flex-grow: 1;
             display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            transition: all 0.3s ease;
         }
-
-        /* Layout Positions */
-        .pos-center { align-items: center; justify-content: center; }
-        .pos-top { align-items: flex-start; justify-content: center; padding-top: 8vh; }
 
         .tab-content { display: none; width: 100%; max-width: 1100px; text-align: center; }
         .tab-content.active { display: block; }
         
-        /* Typography */
-        .meta-title { font-size: 42px !important; font-family: Montserrat-SemiBold; letter-spacing: -1px; line-height: 1.1; color: #fff; }
-        .meta-desc { font-size: 16px !important; line-height: 1.4; color: rgba(255,255,255,0.8); margin: 0 auto; }
+        /* Precise Professional Typography */
+        .meta-title { font-size: 32px !important; font-family: Montserrat-SemiBold; letter-spacing: -0.5px; line-height: 1.1; color: #fff; }
+        .meta-desc { font-size: 14px !important; line-height: 1.6; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
+        .small-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: #0084ff; font-weight: bold; margin-bottom: 15px; display: block; }
         
         /* Feature Grid */
-        .grid-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 40px 20px; border-radius: 12px; transition: 0.3s; }
-        .grid-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
-        .grid-card i { font-size: 35px; color: #0084ff; margin-bottom: 15px; }
-        .grid-card h4 { font-size: 18px; color: #fff; font-family: Montserrat-SemiBold; }
+        .grid-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 8px; transition: all 0.3s ease; }
+        .grid-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-5px); }
+        .grid-card i { font-size: 24px; color: #fff; margin-bottom: 20px; }
+        .grid-card h4 { font-size: 16px; color: #fff; margin-bottom: 10px; font-family: Montserrat-SemiBold; }
 
         /* Navigation Controls */
+        .bottom-nav { position: absolute; bottom: 4%; left: 0; width: 100%; z-index: 100; gap: 16px; }
         .nav-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; border-bottom: 2px solid transparent; padding-bottom: 8px; }
         .nav-btn.active { opacity: 1; border-color: #fff; }
 
@@ -76,24 +75,27 @@
             .desktop-text { display: none !important; }
             .mobile-only-icon { display: inline-block !important; font-size: 20px; color: #fff; margin-left: 20px; }
             .vertical-nav { left: 15px; }
+            
+            /* Shift content to the right to avoid overlap with vertical nav on mobile */
             .main-container { padding-left: 65px !important; padding-right: 20px !important; }
-            .meta-title { font-size: 30px !important; }
-            .pos-top { padding-top: 4vh; }
+            .meta-title { font-size: 26px !important; }
         }
     </style>
 </head>
 <body>
 	
 	<div class="simpleslide100">
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg01.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg03.jpg');"></div>
 		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg04.jpg');"></div>
 	</div>
 
     <div class="vertical-nav">
         <i class="zmdi zmdi-home v-icon" title="Home"></i>
-        <i class="zmdi zmdi-account v-icon" title="Account"></i>
+        <i class="zmdi zmdi-account v-icon" title="User Management"></i>
         <i class="zmdi zmdi-card v-icon" title="Billing"></i>
-        <i class="zmdi zmdi-shopping-cart v-icon" title="Shop"></i>
-        <i class="zmdi zmdi-chart v-icon" title="Stats"></i>
+        <i class="zmdi zmdi-shopping-cart v-icon" title="Shopping"></i>
+        <i class="zmdi zmdi-chart v-icon" title="Analytics"></i>
     </div>
 
 	<div class="main-container size1 overlay1 p-l-75 p-r-75 p-lr-15-sm">
@@ -111,50 +113,54 @@
             </nav>
 		</header>
 
-		<main id="main-content" class="center-content-wrapper pos-center">
+		<main class="center-content-wrapper">
             
             <div id="tab-0" class="tab-content active animated fadeIn">
-                <h1 class="meta-title p-b-20">We connect you<br>to the world.</h1>
-                <p class="meta-desc">Fast internet and simple tools for your community.</p>
+                <span class="small-tag">Our Vision</span>
+                <h1 class="meta-title p-b-25">Connecting Communities,<br> to the world</h1>
+                <p class="meta-desc">Oxean SA builds the digital infrastructure that empowers people to connect, grow, and thrive in a modern ecosystem.</p>
             </div>
 
             <div id="tab-1" class="tab-content animated fadeIn">
-                <h2 class="meta-title p-b-40">What we do.</h2>
                 <div class="row">
                     <div class="col-md-4 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-wifi"></i>
-                            <h4>Fast Internet</h4>
+                            <i class="zmdi zmdi-apps"></i>
+                            <h4>Software</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">Proprietary platforms designed for local community impact.</p>
                         </div>
                     </div>
                     <div class="col-md-4 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-smartphone-android"></i>
-                            <h4>Local Apps</h4>
+                            <i class="zmdi zmdi-code"></i>
+                            <h4>API Services</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">Advanced developer tools and APIs powering the next generation of apps.</p>
                         </div>
                     </div>
                     <div class="col-md-4 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-settings"></i>
-                            <h4>Easy Support</h4>
+                            <i class="zmdi zmdi-input-antenna"></i>
+                            <h4>Connectivity</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">Owner-operated Community ISP providing high-speed digital access.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="tab-2" class="tab-content animated fadeIn">
-                <h2 class="meta-title p-b-40">Growing together.</h2>
                 <div class="row">
                     <div class="col-md-6 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-star"></i>
-                            <h4>Build Skills</h4>
+                            <i class="zmdi zmdi-trending-up"></i>
+                            <h4>Advertising</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">Smart, privacy-first advertising solutions for the local market.</p>
                         </div>
                     </div>
                     <div class="col-md-6 p-all-10">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-accounts-alt"></i>
-                            <h4>Support Local</h4>
+                            <i class="zmdi zmdi-graduation-cap"></i>
+                            <h4>Talent</h4>
+                            <p class="meta-desc" style="font-size: 13px !important;">Mentoring and developing top-tier engineering talent in South Africa.</p>
                         </div>
                     </div>
                 </div>
@@ -164,9 +170,9 @@
 		
 		<footer class="bottom-controls w-full" style="padding-bottom: 50px;">
 			<div class="flex-w flex-c-m">
-				<div class="nav-btn active m-lr-20" onclick="goToTab(0)">Start</div>
-				<div class="nav-btn m-lr-20" onclick="goToTab(1)">Services</div>
-				<div class="nav-btn m-lr-20" onclick="goToTab(2)">Community</div>
+				<div class="nav-btn active m-lr-20" onclick="goToTab(0)">Vision</div>
+				<div class="nav-btn m-lr-20" onclick="goToTab(1)">Ecosystem</div>
+				<div class="nav-btn m-lr-20" onclick="goToTab(2)">Development</div>
 			</div>
 		</footer>
 	</div>
@@ -180,15 +186,6 @@
 
         function goToTab(index) {
             currentTab = index;
-            
-            // Toggle alignment
-            const wrapper = $('#main-content');
-            if(index === 0) {
-                wrapper.removeClass('pos-top').addClass('pos-center');
-            } else {
-                wrapper.removeClass('pos-center').addClass('pos-top');
-            }
-
             $('.tab-content').removeClass('active');
             $(`#tab-${index}`).addClass('active');
             
@@ -196,18 +193,29 @@
             $($('.nav-btn')[index]).addClass('active');
         }
 
-        // Keep scroll/touch logic from main.js or previous version
         let isTransitioning = false;
+        window.addEventListener('wheel', function(e) {
+            if (isTransitioning) return;
+            
+            if (e.deltaY > 0 && currentTab < totalTabs - 1) {
+                lockAndGo(currentTab + 1);
+            } else if (e.deltaY < 0 && currentTab > 0) {
+                lockAndGo(currentTab - 1);
+            }
+        });
+
         function lockAndGo(index) {
             isTransitioning = true;
             goToTab(index);
             setTimeout(() => { isTransitioning = false; }, 800);
         }
 
-        window.addEventListener('wheel', e => {
-            if (isTransitioning) return;
-            if (e.deltaY > 0 && currentTab < totalTabs - 1) lockAndGo(currentTab + 1);
-            else if (e.deltaY < 0 && currentTab > 0) lockAndGo(currentTab - 1);
+        let startY = 0;
+        window.addEventListener('touchstart', e => startY = e.touches[0].pageY);
+        window.addEventListener('touchend', e => {
+            let endY = e.changedTouches[0].pageY;
+            if (startY > endY + 50 && currentTab < totalTabs - 1) goToTab(currentTab + 1);
+            else if (startY < endY - 50 && currentTab > 0) goToTab(currentTab - 1);
         });
     </script>
 </body>
