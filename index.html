@@ -15,7 +15,7 @@
     <style>
         /* Lock Viewport & Meta Aesthetics */
         html, body { overflow: hidden; height: 100vh; width: 100vw; font-family: 'Montserrat-Regular', sans-serif; }
-        
+		
         /* Centering Logic */
         .main-container {
             height: 100vh;
@@ -45,13 +45,13 @@
         
         /* Feature Grid */
         .grid-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 8px; transition: all 0.3s ease; }
-        .grid-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-5px); }
+        .grid-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-50%); }
         .grid-card i { font-size: 24px; color: #fff; margin-bottom: 20px; }
         .grid-card h4 { font-size: 16px; color: #fff; margin-bottom: 10px; font-family: Montserrat-SemiBold; }
 
         /* Navigation Controls */
-        .bottom-nav { position: absolute; bottom: 4%; left: 0; width: 100%; z-index: 100; gap: 16px; }
-        .nav-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; border-bottom: 2px solid transparent; padding-bottom: 8px; }
+        .bottom-nav { position: absolute; bottom: 6%; left: 0; width: 100%; z-index: 100; }
+        .nav-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; border-bottom: 2px solid transparent; padding-left: 2px; padding-right: 2px; padding-bottom: 8px; }
         .nav-btn.active { opacity: 1; border-color: #fff; }
 
         /* Vertical Left Navigation */
@@ -67,6 +67,7 @@
         }
         .v-icon { color: #fff; font-size: 22px; opacity: 0.5; cursor: pointer; transition: 0.3s; }
         .v-icon:hover { opacity: 1; }
+		.v-icon.active { opacity: 0.8; }
 
         /* Mobile Adjustments */
         .mobile-only-icon { display: none !important; }
@@ -76,49 +77,50 @@
             .mobile-only-icon { display: inline-block !important; font-size: 20px; color: #fff; margin-left: 20px; }
             .vertical-nav { left: 15px; }
             
-            /* Shift content to the right to avoid overlap with vertical nav on mobile */
-            .main-container { padding-left: 65px !important; padding-right: 20px !important; }
+            /* Shift main container right to clear the vertical nav */
+            .center-content-wrapper { padding-left: 60px !important; padding-right: 20px !important; }
+			.main-container { padding-left: 0 !important; padding-right: 0 !important; }
+            
+            /* Ensure title font size doesn't force overlap */
             .meta-title { font-size: 26px !important; }
+            
+            /* Allow vertical nav to be slightly smaller on mobile */
+            .v-icon { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 	
-	<div class="simpleslide100">
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg01.jpg');"></div>
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg03.jpg');"></div>
-		<div class="simpleslide100-item bg-img1" style="background-image: url('images/backgrounds/bg04.jpg');"></div>
+	<div class="simpleslide0">
+		<div class="simpleslide100-item bg-img1" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/backgrounds/bg04.jpg') no-repeat center center / cover;"></div>
 	</div>
 
     <div class="vertical-nav">
-        <i class="zmdi zmdi-home v-icon" title="Home"></i>
-        <i class="zmdi zmdi-account v-icon" title="User Management"></i>
-        <i class="zmdi zmdi-card v-icon" title="Billing"></i>
+		<i class="zmdi zmdi-home v-icon active" title="Home"></i>
         <i class="zmdi zmdi-shopping-cart v-icon" title="Shopping"></i>
+		<i class="zmdi zmdi-card v-icon" title="Billing"></i>
         <i class="zmdi zmdi-chart v-icon" title="Analytics"></i>
     </div>
 
 	<div class="main-container size1 overlay1 p-l-75 p-r-75 p-lr-15-sm">
 		
-        <header class="w-full flex-sb-m p-t-40">
+        <header class="w-full flex-sb-m p-t-20">
 			<div class="wrappic1">
 				<a href="#"><span class="lg-txt1" style="font-size: 20px !important;">Oxean SA</span></a>
 			</div>
             <nav class="flex-w flex-m">
                 <a href="#" class="s1-txt1 m-r-25 desktop-text" style="font-size: 12px; opacity: 0.8;">Explore</a>
-                <a href="#" class="s1-txt1 desktop-text" style="font-size: 12px; opacity: 0.8;">Support</a>
+                <a href="#" class="s1-txt1 desktop-text" style="font-size: 12px; opacity: 0.8;">Sign in</a>
 
-                <a href="#" class="mobile-only-icon"><i class="zmdi zmdi-account-o"></i></a>
-                <a href="#" class="mobile-only-icon"><i class="zmdi zmdi-search"></i></a>
+				<a href="#" class="mobile-only-icon p-r-15"><i class="zmdi zmdi-search"></i></a>
+				<a href="#" class="mobile-only-icon p-r-6"><i class="zmdi zmdi-account-o"></i></a>
             </nav>
 		</header>
 
 		<main class="center-content-wrapper">
             
             <div id="tab-0" class="tab-content active animated fadeIn">
-                <span class="small-tag">Our Vision</span>
-                <h1 class="meta-title p-b-25">Connecting Communities,<br> to the world</h1>
-                <p class="meta-desc">Oxean SA builds the digital infrastructure that empowers people to connect, grow, and thrive in a modern ecosystem.</p>
+                <h1 class="meta-title p-b-25">Connecting you<br> to the world</h1>
             </div>
 
             <div id="tab-1" class="tab-content animated fadeIn">
@@ -127,7 +129,7 @@
                         <div class="grid-card">
                             <i class="zmdi zmdi-apps"></i>
                             <h4>Software</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Proprietary platforms designed for local community impact.</p>
+                            <p class="meta-desc" style="font-size: 13px !important;">Proprietary platforms designed for global community impact.</p>
                         </div>
                     </div>
                     <div class="col-md-4 p-all-10">
