@@ -34,154 +34,195 @@
             justify-content: center;
             width: 100%;
         }
+/* Layout Modes */
+        .align-center { align-items: center; justify-content: center; }
+        .align-top { align-items: flex-start; justify-content: center; padding-top: 5vh; }
 
-        .tab-content { display: none; width: 100%; max-width: 1100px; text-align: center; }
+        .tab-content { display: none; width: 100%; max-width: 1100px; }
         .tab-content.active { display: block; }
         
-        /* Precise Professional Typography */
-        .meta-title { font-size: 32px !important; font-family: Montserrat-SemiBold; letter-spacing: -0.5px; line-height: 1.1; color: #fff; }
-        .meta-desc { font-size: 14px !important; line-height: 1.6; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
-        .small-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: #0084ff; font-weight: bold; margin-bottom: 15px; display: block; }
+        /* Typography */
+        .meta-title { font-size: 38px !important; font-family: Montserrat-SemiBold; letter-spacing: -1px; line-height: 1.1; color: #fff; }
+        .meta-desc { font-size: 15px !important; line-height: 1.8; color: rgba(255,255,255,0.7); max-width: 700px; }
+        .section-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: #0084ff; font-weight: bold; margin-bottom: 20px; display: block; }
         
-        /* Feature Grid */
-        .grid-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 8px; transition: all 0.3s ease; }
-        .grid-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-50%); }
-        .grid-card i { font-size: 24px; color: #fff; margin-bottom: 20px; }
-        .grid-card h4 { font-size: 16px; color: #fff; margin-bottom: 10px; font-family: Montserrat-SemiBold; }
-
-        /* Navigation Controls */
-        .bottom-nav { position: absolute; bottom: 6%; left: 0; width: 100%; z-index: 100; }
-        .nav-btn { cursor: pointer; opacity: 0.4; transition: 0.3s; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; border-bottom: 2px solid transparent; padding-left: 2px; padding-right: 2px; padding-bottom: 8px; }
-        .nav-btn.active { opacity: 1; border-color: #fff; }
-
-        /* Vertical Left Navigation */
-        .vertical-nav {
-            position: fixed;
-            left: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            z-index: 1000;
+        /* Grid & Cards */
+        .grid-card { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 35px; 
+            border-radius: 12px; 
+            transition: 0.4s; 
+            text-align: left;
+            height: 100%;
         }
-        .v-icon { color: #fff; font-size: 22px; opacity: 0.5; cursor: pointer; transition: 0.3s; }
-        .v-icon:hover { opacity: 1; }
-		.v-icon.active { opacity: 0.8; }
+        .grid-card:hover { background: rgba(255,255,255,0.08); border-color: #0084ff; transform: translateY(-8px); }
+        .grid-card i { font-size: 30px; color: #0084ff; margin-bottom: 25px; }
+        .grid-card h4 { font-size: 18px; color: #fff; margin-bottom: 12px; font-family: Montserrat-SemiBold; }
 
-        /* Mobile Adjustments */
-        .mobile-only-icon { display: none !important; }
+        /* Buttons */
+        .btn-oxean {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-primary-oxean { background: #0084ff; color: #fff; border: 1px solid #0084ff; }
+        .btn-primary-oxean:hover { background: transparent; color: #0084ff; }
+        .btn-outline-oxean { border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+        .btn-outline-oxean:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
+        /* Navigation */
+        .vertical-nav { position: fixed; left: 25px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 30px; z-index: 1000; }
+        .v-icon { color: #fff; font-size: 22px; opacity: 0.4; cursor: pointer; transition: 0.3s; }
+        .v-icon:hover, .v-icon.active { opacity: 1; color: #0084ff; }
+
+        /* Mobile */
         @media (max-width: 767px) {
-            .desktop-text { display: none !important; }
-            .mobile-only-icon { display: inline-block !important; font-size: 20px; color: #fff; margin-left: 20px; }
+            .main-container { padding-left: 70px !important; padding-right: 20px !important; }
             .vertical-nav { left: 15px; }
-            
-            /* Shift main container right to clear the vertical nav */
-            .main-container { padding-left: 60px !important; padding-right: 20px !important; }
-            
-            /* Ensure title font size doesn't force overlap */
-            .meta-title { font-size: 26px !important; }
-            
-            /* Allow vertical nav to be slightly smaller on mobile */
-            .v-icon { font-size: 18px; }
+            .meta-title { font-size: 28px !important; }
+            .align-top { padding-top: 2vh; }
+            .desktop-text { display: none !important; }
+            .mobile-only-icon { display: inline-block !important; font-size: 20px; color: #fff; margin-left: 15px; }
         }
+        .mobile-only-icon { display: none !important; }
     </style>
 </head>
 <body>
 	
 	<div class="simpleslide0">
-		<div class="simpleslide100-item bg-img1" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/backgrounds/bg04.jpg') no-repeat center center / cover;"></div>
+		<div class="simpleslide100-item bg-img1" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('images/backgrounds/bg04.jpg') no-repeat center center / cover;"></div>
 	</div>
 
     <div class="vertical-nav">
-		<i class="zmdi zmdi-home v-icon active" title="Home"></i>
-        <i class="zmdi zmdi-shopping-cart v-icon" title="Shopping"></i>
-		<i class="zmdi zmdi-card v-icon" title="Billing"></i>
-        <i class="zmdi zmdi-chart v-icon" title="Analytics"></i>
+		<i class="zmdi zmdi-home v-icon active"></i>
+        <i class="zmdi zmdi-shopping-cart v-icon"></i>
+		<i class="zmdi zmdi-card v-icon"></i>
+        <i class="zmdi zmdi-chart v-icon"></i>
     </div>
 
-	<div class="main-container size1 overlay1 p-l-75 p-r-75 p-lr-15-sm">
+	<div class="main-container size1 p-l-75 p-r-75 p-lr-15-sm">
 		
-        <header class="w-full flex-sb-m p-t-20">
+        <header class="w-full flex-sb-m p-t-30">
 			<div class="wrappic1">
-				<a href="#"><span class="lg-txt1" style="font-size: 20px !important;">Oxean SA</span></a>
+				<a href="#"><span class="lg-txt1" style="font-size: 22px !important; font-family: Montserrat-SemiBold;">Oxean SA</span></a>
 			</div>
             <nav class="flex-w flex-m">
-                <a href="#" class="s1-txt1 m-r-25 desktop-text" style="font-size: 12px; opacity: 0.8;">Explore</a>
-                <a href="#" class="s1-txt1 desktop-text" style="font-size: 12px; opacity: 0.8;">Sign in</a>
+                <a href="#" class="s1-txt1 m-r-25 desktop-text" style="font-size: 12px; opacity: 0.8;">Products</a>
+                <a href="#" class="s1-txt1 desktop-text" style="font-size: 12px; opacity: 0.8;">Company</a>
+                <a href="#" class="btn-oxean btn-outline-oxean m-l-20 desktop-text" style="padding: 8px 20px;">Sign in</a>
 
-				<a href="#" class="mobile-only-icon p-r-15"><i class="zmdi zmdi-search"></i></a>
-				<a href="#" class="mobile-only-icon p-r-6"><i class="zmdi zmdi-account-o"></i></a>
+				<a href="#" class="mobile-only-icon"><i class="zmdi zmdi-search"></i></a>
+				<a href="#" class="mobile-only-icon"><i class="zmdi zmdi-account-o"></i></a>
             </nav>
 		</header>
 
-		<main class="center-content-wrapper">
+		<main id="scroll-container" class="center-content-wrapper align-center">
             
             <div id="tab-0" class="tab-content active animated fadeIn">
-                <h1 class="meta-title p-b-25">Connecting you<br> to the world</h1>
+                <div class="text-center">
+                    <span class="section-tag">Global Connectivity</span>
+                    <h1 class="meta-title p-b-25">Building the digital bridge <br> for every community.</h1>
+                    <p class="meta-desc m-lr-auto">We provide the backbone for a connected South Africa, combining high-speed infrastructure with next-generation software solutions.</p>
+                    <div class="flex-c-m p-t-30">
+                        <a href="#" class="btn-oxean btn-primary-oxean m-r-15">Explore Platform</a>
+                        <a href="#" class="btn-oxean btn-outline-oxean" onclick="goToTab(1)">Our Ecosystem</a>
+                    </div>
+                </div>
             </div>
 
             <div id="tab-1" class="tab-content animated fadeIn">
+                <span class="section-tag">Our Ecosystem</span>
+                <h2 class="meta-title p-b-40">Tools for the <br> digital economy.</h2>
+                
                 <div class="row">
-                    <div class="col-md-4 p-all-10">
+                    <div class="col-lg-4 p-b-30">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-apps"></i>
-                            <h4>Software</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Proprietary platforms designed for global community impact.</p>
+                            <i class="zmdi zmdi-cloud-outline"></i>
+                            <h4>Cloud Software</h4>
+                            <p class="meta-desc">Scale your business with our proprietary SaaS modules built for high performance.</p>
+                            <a href="#" class="s1-txt1 p-t-20" style="color: #0084ff; display: block; font-size: 12px;">View Specs →</a>
                         </div>
                     </div>
-                    <div class="col-md-4 p-all-10">
+                    <div class="col-lg-4 p-b-30">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-code"></i>
-                            <h4>API Services</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Advanced developer tools and APIs powering the next generation of apps.</p>
+                            <i class="zmdi zmdi-wifi"></i>
+                            <h4>Broadband</h4>
+                            <p class="meta-desc">Ultra-fast, owner-operated community ISP services reaching the unreachable.</p>
+                            <a href="#" class="s1-txt1 p-t-20" style="color: #0084ff; display: block; font-size: 12px;">Check Coverage →</a>
                         </div>
                     </div>
-                    <div class="col-md-4 p-all-10">
+                    <div class="col-lg-4 p-b-30">
                         <div class="grid-card">
-                            <i class="zmdi zmdi-input-antenna"></i>
-                            <h4>Connectivity</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Owner-operated Community ISP providing high-speed digital access.</p>
+                            <i class="zmdi zmdi-lock-outline"></i>
+                            <h4>Security</h4>
+                            <p class="meta-desc">Military-grade encryption and privacy-first data protocols for your peace of mind.</p>
+                            <a href="#" class="s1-txt1 p-t-20" style="color: #0084ff; display: block; font-size: 12px;">Read Policy →</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="tab-2" class="tab-content animated fadeIn">
-                <div class="row">
-                    <div class="col-md-6 p-all-10">
-                        <div class="grid-card">
-                            <i class="zmdi zmdi-trending-up"></i>
-                            <h4>Advertising</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Smart, privacy-first advertising solutions for the local market.</p>
+                <span class="section-tag">Talent & Development</span>
+                <h2 class="meta-title p-b-20">Empowering Local <br> Engineers.</h2>
+                <p class="meta-desc p-b-40">Oxean SA isn't just about cables and code; it's about people. We invest in the next generation of South African tech leaders through intensive mentorship.</p>
+                
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="grid-card" style="background: rgba(0,132,255,0.1); border-color: #0084ff;">
+                            <h4 style="color: #0084ff;">Join the Fellowship</h4>
+                            <p class="meta-desc" style="color: #fff;">Are you a developer looking to build global-scale APIs? Apply for our 2024 mentorship cohort.</p>
+                            <a href="#" class="btn-oxean btn-primary-oxean">Apply Now</a>
                         </div>
                     </div>
-                    <div class="col-md-6 p-all-10">
-                        <div class="grid-card">
-                            <i class="zmdi zmdi-graduation-cap"></i>
-                            <h4>Talent</h4>
-                            <p class="meta-desc" style="font-size: 13px !important;">Mentoring and developing top-tier engineering talent in South Africa.</p>
-                        </div>
+                    <div class="col-md-6 p-t-30-sm">
+                        <ul class="p-l-20">
+                            <li class="meta-desc p-b-15" style="color: #fff;"><i class="zmdi zmdi-check-circle m-r-10" style="color: #0084ff;"></i> Hands-on API Architecture</li>
+                            <li class="meta-desc p-b-15" style="color: #fff;"><i class="zmdi zmdi-check-circle m-r-10" style="color: #0084ff;"></i> Scalable Database Design</li>
+                            <li class="meta-desc" style="color: #fff;"><i class="zmdi zmdi-check-circle m-r-10" style="color: #0084ff;"></i> Real-world Project Deployment</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
 		</main>
 		
-		<footer class="bottom-controls w-full" style="padding-bottom: 50px;">
+		<footer class="bottom-controls w-full p-b-40">
 			<div class="flex-w flex-c-m">
 				<div class="nav-btn active m-lr-20" onclick="goToTab(0)">Vision</div>
 				<div class="nav-btn m-lr-20" onclick="goToTab(1)">Ecosystem</div>
-				<div class="nav-btn m-lr-20" onclick="goToTab(2)">Development</div>
+				<div class="nav-btn m-lr-20" onclick="goToTab(2)">Talent</div>
 			</div>
 		</footer>
 	</div>
 
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="js/main.js"></script>
-
     <script>
+        function goToTab(index) {
+            $('.tab-content').removeClass('active');
+            $(`#tab-${index}`).addClass('active');
+            
+            $('.nav-btn').removeClass('active');
+            $($('.nav-btn')[index]).addClass('active');
+
+            // Adjust layout alignment based on content
+            if(index === 0) {
+                $('#scroll-container').removeClass('align-top').addClass('align-center');
+            } else {
+                $('#scroll-container').removeClass('align-center').addClass('align-top');
+            }
+            
+            // Scroll to top of content when tab changes
+            $('#scroll-container').scrollTop(0);
+        }
+		
         let currentTab = 0;
         const totalTabs = $('.tab-content').length;
 
@@ -221,3 +262,4 @@
     </script>
 </body>
 </html>
+
