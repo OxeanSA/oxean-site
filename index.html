@@ -13,6 +13,10 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
     <style>
+
+		* {
+			border-radius: 20px;
+		}
         /* Lock Viewport & Meta Aesthetics */
         html, body { overflow: hidden; height: 100vh; width: 100vw; font-family: 'Montserrat-Regular', sans-serif; }
 		
@@ -54,11 +58,11 @@
         .dash-content.active { display: block; animation: fadeIn 0.4s ease; }
         
         /* SpaceX-style UI elements */
-        .dash-title { font-size: 24px; font-family: Montserrat-SemiBold; letter-spacing: -1px; text-transform: uppercase; border-left: 4px solid #000; padding-left: 15px; margin-bottom: 30px; }
+        .dash-title { font-size: 20px; font-family: Montserrat-SemiBold; letter-spacing: -1px; text-transform: uppercase; border-left: 4px solid #000; padding-left: 15px; margin-bottom: 30px; }
         .stat-card { border: 1px solid #e5e7eb; padding: 20px; border-radius: 0px; background: #fafafa; transition: 0.3s; }
         .stat-card:hover { border-color: #000; }
         .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; }
-        .stat-value { font-size: 22px; font-family: Montserrat-SemiBold; color: #000; }
+        .stat-value { font-size: 18px; font-family: Montserrat-SemiBold; color: #000; }
 
 		.dash-mode-icons { color: #6b7280 !important; }
         .dash-mode-icons.active { color: #000 !important; }
@@ -204,10 +208,10 @@
 		<div id="dash-overview" class="dash-content animated fadeIn space-y-6 text-left">
                 <h2 class="dash-title">Overview</h2>
                 <div class="row">
-                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Network Latency</p><p class="stat-value">14ms</p></div></div>
-                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Account Balance</p><p class="stat-value" id="balance-display">R 0.00</p></div></div>
-                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Uptime</p><p class="stat-value">99.98%</p></div></div>
-                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Active Node</p><p class="stat-value">ZA-CPT-01</p></div></div>
+                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Network Speed</p><p class="stat-value">14ms</p></div></div>
+                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Balance</p><p class="stat-value" id="balance-display">R 0.00</p></div></div>
+                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Plan</p><p class="stat-value">99.98%</p></div></div>
+                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Acive Services</p><p class="stat-value">Home Wifi, Link Delta, Lona</p></div></div>
                 </div>
                 <div class="m-t-40 p-all-30">
                     <h4 style="font-family: Montserrat-SemiBold;">Autopay</h4>
@@ -427,6 +431,7 @@
     </script>
 </body>
 </html>
+
 
 
 
