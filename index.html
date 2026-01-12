@@ -27,7 +27,7 @@
             z-index: 10;
         }
 
-		header { border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.5s; }
+		header { transition: all 0.5s; }
 
         .center-content-wrapper {
             flex-grow: 1;
@@ -43,11 +43,11 @@
 		.dash-content { 
             display: none; 
             width: 100%; 
-            padding: 40px 80px; 
+            padding: 20px 20px; 
             text-align: left; 
-            background: #ffffff; 
+            
             color: #000; 
-            height: calc(100vh - 80px); /* Start exactly below header */
+            height: calc(100vh - 75px); /* Start exactly below header */
             overflow-y: auto;
         }
 		
@@ -107,10 +107,10 @@
             .mobile-only { display: inline-block !important; font-size: 20px; color: #fff; margin-left: 20px; }
             .vertical-nav { left: 15px; }
 
-			.dash-content { padding: 20px 20px 20px 60px; }
+			.dash-content { padding: 20px 20px 20px 45px; }
             
             /* Shift main container right to clear the vertical nav */
-            .center-content-wrapper { padding-left: 50px !important; }
+            .center-content-wrapper { padding-left: 0px !important; }
 			
             /* Ensure title font size doesn't force overlap */
             .meta-title { font-size: 26px !important; }
@@ -209,8 +209,8 @@
                     <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Uptime</p><p class="stat-value">99.98%</p></div></div>
                     <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Active Node</p><p class="stat-value">ZA-CPT-01</p></div></div>
                 </div>
-                <div class="m-t-40 p-all-30" style="background: #000; color: #fff;">
-                    <h4 style="font-family: Montserrat-SemiBold;">Automated Systems</h4>
+                <div class="m-t-40 p-all-30">
+                    <h4 style="font-family: Montserrat-SemiBold;">Autopay</h4>
                     <p style="font-size: 12px; opacity: 0.7;">Autopay is currently active. Next billing cycle: Feb 01.</p>
                 </div>
             </div>
@@ -427,6 +427,7 @@
     </script>
 </body>
 </html>
+
 
 
 
