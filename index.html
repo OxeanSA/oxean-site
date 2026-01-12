@@ -14,9 +14,6 @@
 
     <style>
 
-		* {
-			border-radius: 20px;
-		}
         /* Lock Viewport & Meta Aesthetics */
         html, body { overflow: hidden; height: 100vh; width: 100vw; font-family: 'Montserrat-Regular', sans-serif; }
 		
@@ -59,7 +56,7 @@
         
         /* SpaceX-style UI elements */
         .dash-title { font-size: 20px; font-family: Montserrat-SemiBold; letter-spacing: -1px; text-transform: uppercase; border-left: 4px solid #000; padding-left: 15px; margin-bottom: 30px; }
-        .stat-card { border: 1px solid #e5e7eb; padding: 20px; border-radius: 0px; background: #fafafa; transition: 0.3s; }
+        .stat-card { border: 1px solid #e5e7eb; padding: 20px; border-radius: 20px; background: #fafafa; transition: 0.3s; }
         .stat-card:hover { border-color: #000; }
         .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; }
         .stat-value { font-size: 18px; font-family: Montserrat-SemiBold; color: #000; }
@@ -78,7 +75,7 @@
         .small-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: #0084ff; font-weight: bold; margin-bottom: 15px; display: block; }
         
         /* Feature Grid */
-        .grid-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 8px; transition: all 0.3s ease; }
+        .grid-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 20px; transition: all 0.3s ease; }
         .grid-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-50%); }
         .grid-card i { font-size: 24px; color: #fff; margin-bottom: 20px; }
         .grid-card h4 { font-size: 16px; color: #fff; margin-bottom: 10px; font-family: Montserrat-SemiBold; }
@@ -154,7 +151,7 @@
             
             <div id="tab-0" class="tab-content active animated fadeIn">
                 <h1 class="meta-title p-b-25">Connecting you<br> to the world</h1>
-				<p class="meta-desc" style="font-size: 13px !important;">For the Youth, by the Youth</p>
+				<p class="meta-desc" style="font-size: 14px !important;">For the Youth, by the Youth</p>
             </div>
 
             <div id="tab-1" class="tab-content animated fadeIn">
@@ -222,7 +219,7 @@
                     <div class="col-md-6">
                         <div class="p-all-30 border m-b-20">
                             <p class="stat-label">Quick Recharge</p>
-                            <input type="text" id="voucher-pin" class="form-control m-t-10 m-b-10" style="border-radius:0; border: 1px solid #000; height: 50px;" placeholder="ENTER 1VOUCHER PIN">
+                            <input type="text" id="voucher-pin" class="form-control m-t-10 m-b-10" style="border-radius:20px; border: 1px solid #000; height: 50px;" placeholder="ENTER 1VOUCHER PIN">
                             <button onclick="handleVoucherRedeem()" style="background:#000; color:#fff; width:100%; height:50px; font-weight:bold;">PROCESS PAYMENT</button>
                         </div>
                     </div>
@@ -255,8 +252,8 @@
                     <div class="col-md-8">
                         <div class="border p-all-30">
                             <p class="stat-label">Open a Ticket</p>
-                            <select class="form-control m-t-10" style="border-radius:0;"><option>Network Connectivity</option><option>Hardware Fault</option></select>
-                            <textarea class="form-control m-t-10" rows="5" style="border-radius:0;" placeholder="Describe the anomaly..."></textarea>
+                            <select class="form-control m-t-10" style="border-radius:20px;"><option>Network Connectivity</option><option>Hardware Fault</option></select>
+                            <textarea class="form-control m-t-10" rows="5" style="border-radius:20px;" placeholder="Describe the anomaly..."></textarea>
                             <button class="m-t-10" style="background:#000; color:#fff; padding: 10px 30px;">SUBMIT DISPATCH</button>
                         </div>
                     </div>
@@ -428,6 +425,7 @@
     </script>
 </body>
 </html>
+
 
 
 
