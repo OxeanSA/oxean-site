@@ -247,6 +247,7 @@
         function goToTab(index) {
 			$('.dash-content').removeClass('active');
             $('.v-icon').removeClass('active');
+			$('.simpleslide0').style.display = 'block';
 			
             currentTab = index;
             $('.tab-content').removeClass('active');
@@ -273,13 +274,13 @@
             setTimeout(() => { isTransitioning = false; }, 800);
         }
 
-        let startY = 0;
-        window.addEventListener('touchstart', e => startY = e.touches[0].pageY);
-        window.addEventListener('touchend', e => {
-            let endY = e.changedTouches[0].pageY;
-            if (startY > endY + 50 && currentTab < totalTabs - 1) goToTab(currentTab + 1);
-            else if (startY < endY - 50 && currentTab > 0) goToTab(currentTab - 1);
-        });
+        //let startY = 0;
+        //window.addEventListener('touchstart', e => startY = e.touches[0].pageY);
+        //window.addEventListener('touchend', e => {
+        //    let endY = e.changedTouches[0].pageY;
+        //   if (startY > endY + 50 && currentTab < totalTabs - 1) goToTab(currentTab + 1);
+        //    else if (startY < endY - 50 && currentTab > 0) goToTab(currentTab - 1);
+        //});
 
 		// --- DASHBOARD API & CONTENT LOGIC ---
         const API_BASE = "/api";
@@ -290,9 +291,10 @@
             $('.nav-btn').removeClass('active');
             $('.dash-content').removeClass('active');
             $('.v-icon').removeClass('active');
+			$('.simpleslide0').style.display = 'none';
 
             $(`#dash-${sectionId}`).addClass('active');
-            $(`button[onclick="goToDash('${sectionId}')"]`).addClass('active');
+            $(`i[onclick="goToDash('${sectionId}')"]`).addClass('active');
 
             // Data Fetching
             if (sectionId === 'overview') fetchUserProfile();
@@ -385,6 +387,7 @@
     </script>
 </body>
 </html>
+
 
 
 
