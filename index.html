@@ -47,7 +47,7 @@
             padding: 20px 20px; 
             text-align: left; 
             
-            color: #000; 
+            color: #fafafa; 
             height: calc(100vh - 75px); /* Start exactly below header */
             overflow-y: auto;
         }
@@ -55,14 +55,11 @@
         .dash-content.active { display: block; animation: fadeIn 0.4s ease; }
         
         /* SpaceX-style UI elements */
-        .dash-title { font-size: 20px; font-family: Montserrat-SemiBold; letter-spacing: -1px; text-transform: uppercase; border-left: 4px solid #000; padding-left: 15px; margin-bottom: 30px; }
+        .dash-title { font-size: 20px; font-family: Montserrat-SemiBold; letter-spacing: -1px; text-transform: uppercase; border-left: 4px solid #fff; padding-left: 15px; margin-bottom: 30px; }
         .stat-card { border: 1px solid #e5e7eb; padding: 20px; border-radius: 20px; background: #fafafa; transition: 0.3s; }
         .stat-card:hover { border-color: #000; }
         .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; }
         .stat-value { font-size: 18px; font-family: Montserrat-SemiBold; color: #000; }
-
-		.dash-mode-icons { color: #6b7280 !important; }
-        .dash-mode-icons.active { color: #000 !important; }
 
         .monitoring-dot { height: 8px; width: 8px; background-color: #10b981; border-radius: 50%; display: inline-block; margin-right: 8px; }
 
@@ -327,7 +324,7 @@
 
         function goToDash(sectionId) {
             // High-End Professional Switch
-            $('body').css('background', '#ffffff');
+            $('body').css('background', '#0f172a');
             $('#top-header').addClass('dash-mode-header');
             $('.v-icon').addClass('dash-mode-icons');
             $('.simpleslide0').hide();
@@ -425,6 +422,7 @@
     </script>
 </body>
 </html>
+
 
 
 
