@@ -35,8 +35,8 @@
             width: 100%;
         }
 
-        .tab-content { display: none; width: 100%; max-width: 1100px; text-align: center; }
-        .tab-content.active { display: block; }
+        .tab-content, .dash-content { display: none; width: 100%; max-width: 1100px; text-align: center; }
+        .tab-content.active, .dash-content.active  { display: block; }
         
         /* Precise Professional Typography */
         .meta-title { font-size: 38px !important; font-family: Montserrat-SemiBold; letter-spacing: -0.5px; line-height: 1.1; color: #fff; }
@@ -67,7 +67,7 @@
         }
         .v-icon { color: #fff; font-size: 22px; opacity: 0.5; cursor: pointer; transition: 0.3s; }
         .v-icon:hover { opacity: 1; }
-		.v-icon.active { opacity: 0.8; }
+		.v-icon.active { opacity: 0.8; color: #3b82f6;}
 
         /* Mobile Adjustments */
         .mobile-only { display: none !important; }
@@ -88,17 +88,17 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-100">
 	
 	<div class="simpleslide0">
 		<div class="simpleslide100-item bg-img1" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/backgrounds/bg04.jpg') no-repeat center center / cover;"></div>
 	</div>
 
     <div class="vertical-nav">
-		<i class="zmdi zmdi-home v-icon active" title="Home"></i>
-        <i class="zmdi zmdi-globe v-icon" title="Exlore"></i>
-		<i class="zmdi zmdi-card v-icon" title="Billing"></i>
-        <i class="zmdi zmdi-chart v-icon" title="Analytics"></i>
+		<i class="zmdi zmdi-home v-icon active" onclick="goToDash('overview')" title="Home"></i>
+        <i class="zmdi zmdi-globe v-icon" onclick="goToDash('marketplace')" title="Exlore"></i>
+		<i class="zmdi zmdi-card v-icon" onclick="goToDash('billing')" title="Billing"></i>
+        <i class="zmdi zmdi-chart v-icon" onclick="goToDash('activity')" title="Analytics"></i>
     </div>
 
 	<div class="main-container size1 overlay1 p-l-75 p-r-75 p-lr-15-sm">
@@ -168,6 +168,62 @@
                 </div>
             </div>
 
+		<div id="dash-overview" class="dash-content animated fadeIn space-y-6 text-left">
+                <header class="flex justify-between items-center w-full">
+                    <h1 class="text-3xl font-bold">Welcome, <span id="user-display-name">...</span></h1>
+                    <div class="text-right">
+                        <p class="text-sm text-slate-400">Balance</p>
+                        <p class="text-xl font-mono text-green-400" id="balance-display">R 0.00</p>
+                    </div>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                    <div class="bg-slate-800/80 p-6 rounded-xl border border-slate-700">
+                        <h3 class="text-slate-400 mb-2">Service Status</h3>
+                        <p class="text-2xl font-bold" id="status-internet">Loading...</p>
+                    </div>
+                    <div class="bg-slate-800/80 p-6 rounded-xl border border-slate-700">
+                        <h3 class="text-slate-400 mb-2">Current Plan</h3>
+                        <p class="text-2xl font-bold text-purple-400" id="current-plan">Loading...</p>
+                    </div>
+                    <div class="bg-slate-800/80 p-6 rounded-xl border border-slate-700">
+                        <h3 class="text-slate-400 mb-2">Member Since</h3>
+                        <p class="text-2xl font-bold text-orange-400" id="join-date">...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dash-billing" class="dash-content animated fadeIn space-y-6 text-left">
+                <h2 class="text-2xl font-bold">Billing & Payments</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+                    <div class="bg-slate-800/80 p-6 rounded-xl shadow-xl border border-slate-700">
+                        <h3 class="text-lg font-semibold mb-4 text-blue-400">Redeem 1Voucher</h3>
+                        <input type="text" id="voucher-pin" placeholder="16-digit PIN" class="w-full p-4 bg-slate-900 border border-slate-700 rounded-lg mb-4 text-center text-xl tracking-widest font-mono text-white">
+                        <button id="redeem-btn" onclick="handleVoucherRedeem()" class="w-full bg-blue-600 hover:bg-blue-700 p-4 rounded-lg font-bold transition">Redeem Now</button>
+                    </div>
+                    <div class="bg-slate-800/80 p-6 rounded-xl border border-slate-700">
+                        <h3 class="text-lg font-semibold mb-4">History</h3>
+                        <div id="txn-history" class="space-y-2 max-h-60 overflow-y-auto"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dash-activity" class="dash-content animated fadeIn space-y-6 text-left w-full">
+                <h2 class="text-2xl font-bold">Usage Analysis</h2>
+                <div class="bg-slate-800/80 p-6 rounded-xl border border-slate-700">
+                    <canvas id="usageChart" style="max-height: 300px;"></canvas>
+                </div>
+            </div>
+
+            <div id="dash-marketplace" class="dash-content animated fadeIn space-y-6 text-left w-full">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-bold">Lona Marketplace</h2>
+                    <div class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full border border-blue-500/30">
+                        <i class="fas fa-cart-shopping mr-2"></i>Cart: <span id="cart-count">0</span>
+                    </div>
+                </div>
+                <div id="marketplace-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            </div>
+
 		</main>
 		
 		<footer class="bottom-controls w-full" style="padding-bottom: 50px;">
@@ -179,6 +235,8 @@
 		</footer>
 	</div>
 
+	<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="js/main.js"></script>
 
@@ -187,6 +245,9 @@
         const totalTabs = $('.tab-content').length;
 
         function goToTab(index) {
+			$('.dash-content').removeClass('active');
+            $('.v-icon').removeClass('active');
+			
             currentTab = index;
             $('.tab-content').removeClass('active');
             $(`#tab-${index}`).addClass('active');
@@ -219,9 +280,112 @@
             if (startY > endY + 50 && currentTab < totalTabs - 1) goToTab(currentTab + 1);
             else if (startY < endY - 50 && currentTab > 0) goToTab(currentTab - 1);
         });
+
+		// --- DASHBOARD API & CONTENT LOGIC ---
+        const API_BASE = "/api";
+        let usageChart = null;
+
+        function goToDash(sectionId) {
+            $('.tab-content').removeClass('active');
+            $('.nav-btn').removeClass('active');
+            $('.dash-content').removeClass('active');
+            $('.v-icon').removeClass('active');
+
+            $(`#dash-${sectionId}`).addClass('active');
+            $(`button[onclick="goToDash('${sectionId}')"]`).addClass('active');
+
+            // Data Fetching
+            if (sectionId === 'overview') fetchUserProfile();
+            if (sectionId === 'billing') fetchTransactions();
+            if (sectionId === 'activity') fetchUsageData();
+            if (sectionId === 'marketplace') fetchMarketplace();
+        }
+
+        async function apiRequest(endpoint, method = 'GET', body = null) {
+            const accessKey = localStorage.getItem('access_key');
+            const refreshKey = localStorage.getItem('refresh_key');
+            const headers = { 'Content-Type': 'application/json', 'X-Access-Key': accessKey || '', 'X-Refresh-Key': refreshKey || '' };
+            const options = { method, headers };
+            if (body) options.body = JSON.stringify(body);
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`, options);
+                if (response.status === 401) return null;
+                const data = await response.json();
+                return data;
+            } catch (err) { return null; }
+        }
+
+        async function fetchUserProfile() {
+            const data = await apiRequest('/user/profile');
+            if (data) {
+                document.getElementById('user-display-name').innerText = data.firstname || 'User';
+                document.getElementById('balance-display').innerText = `R ${parseFloat(data.balance || 0).toFixed(2)}`;
+                document.getElementById('status-internet').innerText = data.paid ? 'Active' : 'Suspended';
+                document.getElementById('current-plan').innerText = data.internet_plan || 'No Plan';
+                if(data.created_at) document.getElementById('join-date').innerText = new Date(data.created_at).toLocaleDateString();
+            }
+        }
+
+        async function fetchTransactions() {
+            const data = await apiRequest('/billing/history');
+            const container = document.getElementById('txn-history');
+            if (data && data.transactions) {
+                container.innerHTML = data.transactions.map(t => `
+                    <div class="flex justify-between p-3 bg-slate-900 rounded border-l-4 ${t.amount > 0 ? 'border-green-500' : 'border-red-500'}">
+                        <div><p class="text-sm font-bold text-white">${t.description}</p></div>
+                        <p class="font-mono ${t.amount > 0 ? 'text-green-400' : 'text-red-400'}">R ${Math.abs(t.amount).toFixed(2)}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        async function fetchUsageData() {
+            const data = await apiRequest('/activity/analysis');
+            if (!data) return;
+            const ctx = document.getElementById('usageChart').getContext('2d');
+            if (usageChart) usageChart.destroy();
+            usageChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        { label: 'Activity', data: data.social, borderColor: '#3b82f6', tension: 0.3, fill: true, backgroundColor: 'rgba(59, 130, 246, 0.1)' },
+                        { label: 'Data (GB)', data: data.usage, borderColor: '#a855f7', tension: 0.3 }
+                    ]
+                },
+                options: { responsive: true, plugins: { legend: { labels: { color: '#fff' } } }, scales: { y: { grid: { color: '#334155' } }, x: { grid: { color: '#334155' } } } }
+            });
+        }
+
+        async function fetchMarketplace() {
+            const data = await apiRequest('/marketplace/products');
+            const grid = document.getElementById('marketplace-grid');
+            if (data && data.products) {
+                grid.innerHTML = data.products.map(p => `
+                    <div class="bg-slate-800/80 border border-slate-700 rounded-xl overflow-hidden p-4">
+                        <h4 class="font-bold text-white">${p.name}</h4>
+                        <p class="text-blue-400 font-mono">R ${p.price.toFixed(2)}</p>
+                        <button class="mt-4 w-full bg-blue-600 py-2 rounded-lg text-sm font-bold text-white">Add to Cart</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        async function handleVoucherRedeem() {
+            const pin = document.getElementById('voucher-pin').value;
+            if (pin.length < 16) return alert("Invalid PIN");
+            const res = await apiRequest('/billing/redeem-voucher', 'POST', { pin });
+            if (res && res.status === 'ok') {
+                alert(`Success! R ${res.value} added.`);
+                fetchUserProfile();
+            }
+        }
+
+        window.onload = () => { if (localStorage.getItem('access_key')) fetchUserProfile(); };
     </script>
 </body>
 </html>
+
 
 
 
