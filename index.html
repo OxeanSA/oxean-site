@@ -247,7 +247,8 @@
         function goToTab(index) {
 			$('.dash-content').removeClass('active');
             $('.v-icon').removeClass('active');
-			$('.simpleslide0').style.display = 'block';
+			$('.simpleslide0').show();
+			$('.bottom-controls').show();
 			
             currentTab = index;
             $('.tab-content').removeClass('active');
@@ -291,7 +292,8 @@
             $('.nav-btn').removeClass('active');
             $('.dash-content').removeClass('active');
             $('.v-icon').removeClass('active');
-			$('.simpleslide0').style.display = 'none';
+			$('.simpleslide0').hide();
+			$('.bottom-controls').hide();
 
             $(`#dash-${sectionId}`).addClass('active');
             $(`i[onclick="goToDash('${sectionId}')"]`).addClass('active');
@@ -387,6 +389,7 @@
     </script>
 </body>
 </html>
+
 
 
 
