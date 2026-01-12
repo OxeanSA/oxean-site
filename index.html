@@ -120,7 +120,9 @@
 </head>
 <body>
 	
-	
+	<div class="simpleslide0">
+		<div class="simpleslide100-item bg-img1" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/backgrounds/bg04.jpg') no-repeat center center / cover;"></div>
+	</div>
 
     <div class="vertical-nav">
 		<i class="zmdi zmdi-home v-icon active" onclick="goToDash('overview')" title="Home"></i>
@@ -325,7 +327,7 @@
 
         function goToDash(sectionId) {
             // High-End Professional Switch
-            $('.main-container').css('background', '#ffffff');
+            $('body').css('background', '#ffffff');
             $('#top-header').addClass('dash-mode-header');
             $('.v-icon').addClass('dash-mode-icons');
             $('.simpleslide0').hide();
@@ -423,6 +425,7 @@
     </script>
 </body>
 </html>
+
 
 
 
