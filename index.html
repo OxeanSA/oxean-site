@@ -99,7 +99,7 @@
 
 		.login-container { display: none; }
         .admin-usernamecontainer { background: transparent; height: 40px;}
-		.admin-username-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; margin-right: 8px; }
+		.admin-username-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; margin-right: 20px; }
 		.admin-username-input:focus { background: transparent; }
 		
 		.admin-password-container { background: transparent; height: 40px;}
@@ -134,7 +134,7 @@
             .v-icon { font-size: 18px; }
 
 			.admin-username-container { background: transparent; height: 40px; }
-		    .admin-username-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; margin-bottom: 12px; }
+		    .admin-username-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; margin-bottom: 20px; }
 
 			.admin-password-container { background: transparent; height: 40px; }
 		    .admin-password-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; }
@@ -190,7 +190,7 @@
 						<input type="text" id="admin_username" class="admin-username-input on-desktop rounded-pill border border-white" placeholder="Username">
 						<input type="password" id="admin_password" class="admin-password-input rounded-pill border border-white" placeholder="Password">
 					</div>
-					<button onclick="attemptAdminLogin()" class="login-button flex-c-m size2 s2-txt1 color-white p-lr-15 trans-04 w-full"><span class="rounded-pill border border-white">LOGIN</span></button>
+					<button onclick="doLogin()" class="login-button flex-c-m size2 s2-txt1 color-white p-lr-15 trans-04 w-full"><span class="rounded-pill border border-white">LOGIN</span></button>
 					<p id="login-error" class="meta-desc text-danger dis-none" style="font-size: 14px !important;">Invalid Password</p>
 				</div>
             </div>
@@ -417,6 +417,19 @@
             } catch (err) { return null; }
         }
 
+		async function doLogin() {
+			const username = $('#login_username').val();
+            const password = $('#login_password').val();
+            const res = await fetch(`${API_DASE}/account/login`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({'email': username, 'password': password}) });
+            const data = await res.json();
+            if(res.ok && data.access_token) { 
+                sessionStorage.setItem('access_token', data.access_token); 
+				sessionStorage.setItem('refresh_token', data.refresh_token);
+				sessionStorage.setItem('loggedin', true);
+                access_token = data.access_token; 
+                goToDash('overview');
+            } else { $('#login-error').show(); }
+        }
 
         async function fetchUserProfile() {
             const data = await apiRequest('/user/profile');
@@ -481,6 +494,7 @@
     </script>
 </body>
 </html>
+
 
 
 
