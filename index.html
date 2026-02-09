@@ -94,7 +94,7 @@
             z-index: 1000;
         }
         .v-icon { color: #fff; font-size: 22px; opacity: 0.5; cursor: pointer; transition: 0.3s; }
-        .v-icon:hover { opacity: 1; }
+        .v-icon:focus { opacity: 1; }
 		.v-icon.active { opacity: 0.8; color: #3b82f6;}
 
 		.login-container { display: none; }
@@ -403,6 +403,18 @@
 
         function goToDash(sectionId) {
 			if (localStorage.getItem('loggedin') == true) {
+				$('.free-only').hide();
+				$('.pro-only').hide();
+				$('.biz-only').hide();
+				if (localStorage.getItem('userType') == 'pro') {
+					$('.pro-only').show();
+				} else if (localStorage.getItem('userType') == 'business') {
+					$('.biz-only').show();
+					$('.pro-only').show();
+				} else {
+					$('.free-only').show();
+				}
+					
 				$('body').css('background', '#0f172a');
 				$('#top-header').addClass('dash-mode-header');
 				$('.v-icon').addClass('dash-mode-icons');
@@ -455,6 +467,7 @@
                 sessionStorage.setItem('access_token', data.access_token); 
 				sessionStorage.setItem('refresh_token', data.refresh_token);
 				sessionStorage.setItem('loggedin', true);
+				sessionStorage.setItem('userType', data.usertype || 'free');
                 access_token = data.access_token; 
                 goToDash('overview');
             } else { $('#login-error').show(); }
@@ -523,6 +536,7 @@
     </script>
 </body>
 </html>
+
 
 
 
