@@ -97,14 +97,34 @@
         .v-icon:hover { opacity: 1; }
 		.v-icon.active { opacity: 0.8; color: #3b82f6;}
 
+		.login-container { display: none; }
+        .admin-usernamecontainer { background: transparent; height: 40px;}
+		.admin-username-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; margin-right: 8px; }
+		.admin-username-input:focus { background: transparent; }
+		
+		.admin-password-container { background: transparent; height: 40px;}
+		.admin-password-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; }
+		.admin-password-input:focus { background: transparent; }
+
+		.login-button { color: #fff; }
+
+		.h-revenue-projection-title { margin-bottom: 8px; }
+		.h-revenue-projection-container { width: 100%; height: 300px; }
+		.h-revenue-projection { width: 100%; height: 100%; }
+
         /* Mobile Adjustments */
+		.on-mobile { display: none !important; }
         .mobile-only { display: none !important; }
+
+		.on-desktop {  display: block !important; }
 
         @media (max-width: 767px) {
             .desktop-text { display: none !important; }
+			.on-desktop { display: none !important; }
+			.on-mobile { display: flex !important; }
             .mobile-only { display: inline-block !important; font-size: 20px; color: #fff; margin-left: 20px; }
             .vertical-nav { left: 15px; }
-
+			
 			.dash-content { padding: 20px 14px 20px 45px; }
             
             /* Ensure title font size doesn't force overlap */
@@ -112,6 +132,16 @@
             
             /* Allow vertical nav to be slightly smaller on mobile */
             .v-icon { font-size: 18px; }
+
+			.admin-username-container { background: transparent; height: 40px; }
+		    .admin-username-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; margin-bottom: 12px; }
+
+			.admin-password-container { background: transparent; height: 40px; }
+		    .admin-password-input {  background: transparent; border-radius: 20px; height: 100%; padding: 6px; }
+
+			.h-revenue-projection-title { margin-bottom: 6px; }
+			.h-revenue-projection-container { width: 100%; height: 80px; }
+			.h-revenue-projection { width: 100%; height: 100%; }
         }
     </style>
 </head>
@@ -137,19 +167,32 @@
 			</div>
             <nav class="flex-w flex-m">
                 <a href="#" class="s1-txt1 m-r-25 desktop-text" style="font-size: 12px; opacity: 0.8;">Explore</a>
-                <a href="#" class="s1-txt1 desktop-text" style="font-size: 12px; opacity: 0.8;">Sign in</a>
+                <a href="#" class="s1-txt1 desktop-text" style="font-size: 12px; opacity: 0.8;" onclick="showLogin()">Sign in</a>
 
 				<a href="#" class="mobile-only p-r-15"><i class="zmdi zmdi-search"></i></a>
-				<a href="#" class="mobile-only p-r-6"><i class="zmdi zmdi-account-o"></i></a>
+				<a href="#" class="mobile-only p-r-6" onclick="showLogin()"><i class="zmdi zmdi-account-o"></i></a>
             </nav>
 		</header>
 
 		<main class="center-content-wrapper">
             
             <div id="tab-0" class="tab-content active animated fadeIn">
-                <h1 class="meta-title p-b-25">Connecting you<br> to the world</h1>
-				<p class="meta-desc" style="font-size: 14px !important;">For the Youth, by the Youth</p>
-				<p class="meta-desc" style="font-size: 13px !important;">Site currently in development,<br> all services listed are for testing purposes only</p>
+				<div class="main-content">
+					<h1 class="meta-title p-b-25">Connecting you<br> to the world</h1>
+					<p class="meta-desc" style="font-size: 14px !important;">For the Youth, by the Youth</p>
+				</div>
+				<div class="login-container animated fadeIn desp-none">
+					<h3 class="meta-title p-b-20">Sign in</h3>
+					<div class="admin-username-container on-mobile flex-c-m size2 s2-txt1 btn-blue p-lr-15 trans-04 w-full">
+						<input type="text" id="admin_username" class="admin-username-input rounded-pill border border-white" placeholder="Username">
+					</div>
+					<div class="admin-password-container flex-c-m size2 s2-txt1 btn-blue p-lr-15 trans-04 w-full">
+						<input type="text" id="admin_username" class="admin-username-input on-desktop rounded-pill border border-white" placeholder="Username">
+						<input type="password" id="admin_password" class="admin-password-input rounded-pill border border-white" placeholder="Password">
+					</div>
+					<button onclick="attemptAdminLogin()" class="login-button flex-c-m size2 s2-txt1 color-white p-lr-15 trans-04 w-full"><span class="rounded-pill border border-white">LOGIN</span></button>
+					<p id="login-error" class="meta-desc text-danger dis-none" style="font-size: 14px !important;">Invalid Password</p>
+				</div>
             </div>
 
             <div id="tab-1" class="tab-content animated fadeIn">
@@ -279,6 +322,12 @@
         let currentTab = 0;
         const totalTabs = $('.tab-content').length;
 
+		const API_DASE = "https://api.oxeansa.co.za";
+
+		const ADMIN_API = "https://api.oxeansa.co.za/asherlink/admin";
+        const SYSTEM_API = "https://api.oxeansa.co.za/asherlink/system";
+        const HOTSPOT_API = "https://api.oxeansa.co.za/asherlink/hotspot";
+
         function goToTab(index) {
 			// Restore Original Look
             $('body').css('background', '#0f172a');
@@ -321,31 +370,38 @@
         //});
 
 		// --- DASHBOARD API & CONTENT LOGIC ---
-        const API_BASE = "/api";
         let usageChart = null;
 
         function goToDash(sectionId) {
-            // High-End Professional Switch
-            $('body').css('background', '#0f172a');
-            $('#top-header').addClass('dash-mode-header');
-            $('.v-icon').addClass('dash-mode-icons');
-            $('.simpleslide0').hide();
-            $('.bottom-controls').hide();
-
-            $('.tab-content').removeClass('active');
-            $('.nav-btn').removeClass('active');
-            $('.dash-content').removeClass('active');
-            $('.v-icon').removeClass('active');
-
-            $(`#dash-${sectionId}`).addClass('active');
-            $(`i[onclick="goToDash('${sectionId}')"]`).addClass('active');
-
-           // Data Fetching
-            if (sectionId === 'overview') fetchUserProfile();
-            if (sectionId === 'billing') fetchTransactions();
-            if (sectionId === 'activity') fetchUsageData();
-            if (sectionId === 'marketplace') fetchMarketplace();
+			if (localStorage.getItem('loggedin') == true) {
+				$('body').css('background', '#0f172a');
+				$('#top-header').addClass('dash-mode-header');
+				$('.v-icon').addClass('dash-mode-icons');
+				$('.simpleslide0').hide();
+				$('.bottom-controls').hide();
+				
+				$('.tab-content').removeClass('active');
+				$('.nav-btn').removeClass('active');
+				$('.dash-content').removeClass('active');
+				$('.v-icon').removeClass('active');
+				
+				$(`#dash-${sectionId}`).addClass('active');
+				$(`i[onclick="goToDash('${sectionId}')"]`).addClass('active');
+				
+				if (sectionId === 'overview') fetchUserProfile();
+				if (sectionId === 'billing') fetchTransactions();
+				if (sectionId === 'activity') fetchUsageData();
+				if (sectionId === 'marketplace') fetchMarketplace();
+			} else {
+				showLogin();
+			}
         }
+
+		function showLogin() {
+			goToTab(0);
+			$('.main-content').hide();
+            $('.login-container').show();
+		}
 
         async function apiRequest(endpoint, method = 'GET', body = null) {
             const accessKey = localStorage.getItem('access_key');
@@ -360,6 +416,7 @@
                 return data;
             } catch (err) { return null; }
         }
+
 
         async function fetchUserProfile() {
             const data = await apiRequest('/user/profile');
@@ -424,6 +481,7 @@
     </script>
 </body>
 </html>
+
 
 
 
