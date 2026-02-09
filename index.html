@@ -98,16 +98,16 @@
 		.v-icon.active { opacity: 0.8; color: #3b82f6;}
 
 		.login-container { display: none; }
-        .admin-usernamecontainer { background: transparent; height: 40px;}
-		.admin-username-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; }
-		.admin-username-input.on-desktop {  margin-right: 20px; }
-		.admin-username-input:focus { background: transparent; color: #fff; }
+        .login-usernamecontainer { background: transparent; height: 40px;}
+		.login-username-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; }
+		.login-username-input.on-desktop {  margin-right: 20px; }
+		.login-username-input:focus { background: transparent; color: #fff; }
 		
-		.admin-password-container { background: transparent; height: 40px;}
-		.admin-password-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; }
-		.admin-password-input:focus { background: transparent; color: #fff; }
+		.login-password-container { background: transparent; height: 40px;}
+		.login-password-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; }
+		.login-password-input:focus { background: transparent; color: #fff; }
 
-		.login-button { color: #fff; }
+		.login-button { color: #fff; padding: 6px; font-weight: 500; }
 
 		.h-revenue-projection-title { margin-bottom: 8px; }
 		.h-revenue-projection-container { width: 100%; height: 300px; }
@@ -118,6 +118,15 @@
         .mobile-only { display: none !important; }
 
 		.on-desktop {  display: block !important; }
+
+		.free-only { display: none !important; }
+
+		.trial-only { display: none !important; }
+
+		.pro-only { display: none !important; }
+
+		.biz-only { display: none !important; }
+		
 
         @media (max-width: 767px) {
             .desktop-text { display: none !important; }
@@ -134,13 +143,13 @@
             /* Allow vertical nav to be slightly smaller on mobile */
             .v-icon { font-size: 18px; }
 
-			.admin-username-container { background: transparent; height: 40px; }
-		    .admin-username-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; margin-bottom: 20px; }
-			.admin-username-input:focus { background: transparent; color: #fff; }
+			.login-username-container { background: transparent; height: 40px; }
+		    .login-username-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; margin-bottom: 20px; }
+			.login-username-input:focus { background: transparent; color: #fff; }
 
-			.admin-password-container { background: transparent; height: 40px; }
-		    .admin-password-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; }
-			.admin-password-input:focus { background: transparent; color: #fff; }
+			.login-password-container { background: transparent; height: 40px; }
+		    .login-password-input {  background: transparent; color: #fff; border-radius: 20px; height: 100%; padding: 6px; }
+			.login-password-input:focus { background: transparent; color: #fff; }
 
 			.h-revenue-projection-title { margin-bottom: 6px; }
 			.h-revenue-projection-container { width: 100%; height: 80px; }
@@ -186,12 +195,12 @@
 				</div>
 				<div class="login-container animated fadeIn desp-none">
 					<h3 class="meta-title p-b-20">Sign in</h3>
-					<div class="admin-username-container on-mobile flex-c-m size2 s2-txt1 btn-blue p-lr-15 trans-04 w-full">
-						<input type="text" id="admin_username" class="admin-username-input rounded-pill border border-white" placeholder="Username">
+					<div class="login-username-container on-mobile flex-c-m size2 s2-txt1 btn-blue p-lr-15 trans-04 w-full">
+						<input type="text" id="login_username" class="login-username-input rounded-pill border border-white" placeholder="Username">
 					</div>
-					<div class="admin-password-container flex-c-m size2 s2-txt1 btn-blue p-lr-15 trans-04 w-full">
-						<input type="text" id="admin_username" class="admin-username-input on-desktop rounded-pill border border-white" placeholder="Username">
-						<input type="password" id="admin_password" class="admin-password-input rounded-pill border border-white" placeholder="Password">
+					<div class="login-password-container flex-c-m size2 s2-txt1 btn-blue p-lr-15 trans-04 w-full">
+						<input type="text" id="login_username" class="login-username-input on-desktop rounded-pill border border-white" placeholder="Username">
+						<input type="password" id="login_password" class="login-password-input rounded-pill border border-white" placeholder="Password">
 					</div>
 					<button onclick="doLogin()" class="login-button flex-c-m size2 s2-txt1 color-white p-lr-15 trans-04 w-full"><span class="rounded-pill border border-white">LOGIN</span></button>
 					<p id="login-error" class="meta-desc text-danger dis-none" style="font-size: 14px !important;">Invalid Password</p>
@@ -247,14 +256,30 @@
                 <h2 class="dash-title">Overview</h2>
                 <div class="row">
 					<div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Balance</p><p class="stat-value" id="balance-display">R 0.00</p></div></div>
-                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Network Speed</p><p class="stat-value">14ms</p></div></div>
-                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Net Plan</p><p class="stat-value">Premium</p></div></div>
-					<div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Total Bandwidth</p><p class="stat-value">4.7Gb down / 320Mb up</p></div></div>
-                    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Active Services</p><p class="stat-value">Asher-Link</p></div></div>
+					<div clas="free-only">
+						<div class="col-md-3 m-b-20 free-only"><div class="stat-card"><p class="stat-label">Network Speed</p><p class="stat-value">14Mbps</p></div></div>
+						<div class="col-md-3 m-b-20 biz-only"><div class="stat-card"><p class="stat-label">Speed</p><p class="stat-value net-speed-value">20Mbps</p></div></div>
+                        <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Net Plan</p><p class="stat-value">Premium</p></div></div>
+					    <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Total Bandwidth</p><p class="stat-value">4.7Gb down / 320Mb up</p></div></div>
+                        <div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Active Services</p><p class="stat-value">Asher-Link</p></div></div>
+					</div>
+
+					<div class="biz-only">
+						<div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Speed</p><p class="stat-value net-speed-value">20Mbps</p></div></div>
+						<div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">APs</p><p class="stat-value active-nodes-value">4 <span class="rounded-circle bg-success" style="width: 6px; height: 6px; display: inline-block;"></span> | 0 <span class="rounded-circle bg-danger" style="width: 6px; height: 6px; display: inline-block;"></span></p></div></div>
+						<div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Bandwidth</p><p class="stat-value"><span class="bandwidth-download-value">4.7Gb</span> &darr; / <span class="bandwidth-upload-value">320MB</span> &uarr;</p></div></div>
+						<div class="col-md-3 m-b-20"><div class="stat-card"><p class="stat-label">Servers</p><p class="stat-value">API <span class="rounded-circle bg-success" style="width: 6px; height: 6px; display: inline-block;"></span> | M172-1 <span class="rounded-circle bg-success" style="width: 6px; height: 6px; display: inline-block;"></span></p></div></div>
+					</div>
                 </div>
                 <div class="m-t-40 p-all-30">
-                    <h4 style="font-family: Montserrat-SemiBold;">Autopay</h4>
-                    <p style="font-size: 12px; opacity: 0.7;">Autopay is currently active. Next billing cycle: Feb 01.</p>
+					<h4 class="h-revenue-projection-title free-only">Usage Chart</h4>
+					<div class="h-revenue-projection-container free-only">
+						<canvas id="performanceChart" class="h-revenue-projection free-only"></canvas>
+					</div>
+                    <h4 class="h-revenue-projection-title biz-only">Revenue Projection (CPM: R5.00)</h4>
+					<div class="h-revenue-projection-container biz-only">
+						<canvas id="performanceChart" class="h-revenue-projection biz-only"></canvas>
+					</div>
                 </div>
             </div>
 
@@ -497,6 +522,7 @@
     </script>
 </body>
 </html>
+
 
 
 
